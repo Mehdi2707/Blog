@@ -17,28 +17,32 @@
     </head>
     <body>
 
-        <nav class="py-2 bg-dark border-bottom">
-            <div class="container d-flex flex-wrap">
-                <div class="dropdown">
-                    <a class="nav nav-link dropdown-toggle text-white" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Mon blog
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButtonAdminDashboard">
-                        <li><a class="dropdown-item" href="{{ path('admin') }}">Tableau de bord</a></li>
-                        <li><a class="dropdown-item" href="{{ ea_index('MenuCrudController') }}">Menus</a></li>
-                    </ul>
+        {% if is_granted('ROLE_AUTHOR') %}
+            <nav class="py-2 bg-dark border-bottom">
+                <div class="container d-flex flex-wrap">
+                    <div class="dropdown">
+                        <a class="nav nav-link dropdown-toggle text-white" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Mon blog
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButtonAdminDashboard">
+                            <li><a class="dropdown-item" href="{{ path('admin') }}">Tableau de bord</a></li>
+                            {% if is_granted('ROLE_ADMIN') %}
+                                <li><a class="dropdown-item" href="{{ ea_index('MenuCrudController') }}">Menus</a></li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                    <div class="dropdown">
+                        <a class="nav nav-link dropdown-toggle text-white" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            Ajouter
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButtonAdminAdd">
+                            <li><a class="dropdown-item" href="#">Article</a></li>
+                            <li><a class="dropdown-item" href="#">Page</a></li>
+                        </ul>
+                    </div>
                 </div>
-                <div class="dropdown">
-                    <a class="nav nav-link dropdown-toggle text-white" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                        Ajouter
-                    </a>
-                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButtonAdminAdd">
-                        <li><a class="dropdown-item" href="#">Article</a></li>
-                        <li><a class="dropdown-item" href="#">Page</a></li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+            </nav>
+        {% endif %}
 
         <div class="container">
             <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">

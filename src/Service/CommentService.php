@@ -6,7 +6,7 @@ use App\Entity\Article;
 use App\Repository\CommentRepository;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\RequestStack;
-//use Knp\Component\Pager\Pagination\PaginationInterface;
+use Knp\Component\Pager\Pagination\PaginationInterface;
 
 class CommentService
 {
@@ -15,7 +15,7 @@ class CommentService
         
     }
 
-    public function getPaginatedComments(?Article $article = null)//: PaginationInterface
+    public function getPaginatedComments(?Article $article = null): PaginationInterface
     {
         $request = $this->requestStack->getMainRequest();
         $page = $request->query->getInt('page', 1);

@@ -14,6 +14,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use App\Entity\Menu;
+use App\Entity\Option;
 use App\Entity\User;
 
 class DashboardController extends AbstractDashboardController
@@ -72,8 +73,12 @@ class DashboardController extends AbstractDashboardController
 
             yield MenuItem::subMenu('Comptes', 'fas fa-user')->setSubItems([
                 MenuItem::linkToCrud('Tous les comptes', 'fas fa-user-friends', User::class)->setQueryParameter('submenuIndex', 0),
-                MenuItem::linkToCrud('Ajouter', 'fas fa-plus', User::class)->setQueryParameter('submenuIndex', 3)->setAction(Crud::PAGE_NEW)
-            ]);    
+                MenuItem::linkToCrud('Ajouter', 'fas fa-plus', User::class)->setQueryParameter('submenuIndex', 1)->setAction(Crud::PAGE_NEW)
+            ]);
+            
+            yield MenuItem::subMenu('Réglages', 'fas fa-cog')->setSubItems([
+                MenuItem::linkToCrud('Général', 'fas fa-cog', Option::class)
+            ]);
         }
     }
 }

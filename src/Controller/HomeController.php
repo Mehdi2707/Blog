@@ -15,7 +15,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
-use WelcomeModel;
+use App\Model\WelcomeModel;
 
 class HomeController extends AbstractController
 {
@@ -37,7 +37,7 @@ class HomeController extends AbstractController
         if($optionService->getValue(WelcomeModel::SITE_INSTALLED_NAME))
             return $this->redirectToRoute('app_home');
 
-        $welcomeForm = $this->createForm(WelcomeType::class, new \WelcomeModel());
+        $welcomeForm = $this->createForm(WelcomeType::class, new \App\Model\WelcomeModel());
 
         $welcomeForm->handleRequest($request);
 

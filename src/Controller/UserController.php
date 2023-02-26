@@ -9,7 +9,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Entity\User;
-use App\Form\RegistrationFormType;
+use App\Form\Type\RegistrationFormType;
 use App\Service\OptionService;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 

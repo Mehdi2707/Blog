@@ -8,7 +8,7 @@ use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-//use WelcomeModel;
+use App\Model\WelcomeModel;
 
 class WelcomeType extends AbstractType
 {
@@ -16,7 +16,7 @@ class WelcomeType extends AbstractType
     {
         $builder
             ->add('siteTitle', TextType::class, [
-                'label' => \WelcomeModel::SITE_TITLE_LABEL
+                'label' => WelcomeModel::SITE_TITLE_LABEL
             ])
             ->add('username', TextType::class, [
                 'label' => "Nom d'utilisateur"
@@ -32,7 +32,7 @@ class WelcomeType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => \WelcomeModel::class
+            'data_class' => WelcomeModel::class
         ]);
     }
 }
